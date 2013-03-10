@@ -1,0 +1,20 @@
+\begin{thebibliography}{1}
+
+\bibitem{Rikitake:2011:2034654}
+{\em Erlang '11: Proceedings of the 10th ACM SIGPLAN workshop on Erlang}, New
+  York, NY, USA, 2011. ACM.
+\newblock 553112.
+
+\bibitem{netflix_chaosmonkey}
+Cory Bennett and Ariel Tseitlin.
+\newblock {Chaos Monkey Released Into The Wild}.
+\newblock
+  \url{http://techblog.netflix.com/2012/07/chaos-monkey-released-into-wild.html},
+  2008.
+\newblock [Online; accessed 19-July-2008].
+
+\bibitem{testing_techniques}
+Lu~Luo.
+\newblock Software testing techniques.
+
+\end{thebibliography}

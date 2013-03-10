@@ -1,0 +1,21 @@
+Bugs have to be
+
+Chaos Monkey
+
+When testing distributed systems a new class of software bugs emerge which
+conventional testing procedures may not catch. One inconvenient property of such
+bugs are infrequent occurrences and are difficult to reproduce, especially with
+code not yet in production.
+
+One counterintuitive approach would be Netflix implementation "Chaos Monkey"
+disaster testing system, which operates on Amazons cloud computing platform. It
+randomly causes failures of the virtual machine instances, know as *Auto Scaling
+Groups*. This puts the distributed systems resiliency at test and functions as a
+security measure against netsplits, erratic behavior and failure caused by high
+latency and other distributed bugs.
+
+Distributed systems are susceptible to different types of bugs nature than
+centralized systems, 
+
+The CAP theorem states that distributed systems cannot provide *Consistency*,
+    *Availability* and *Partition tolerance*, all at once. 
