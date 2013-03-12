@@ -7,7 +7,7 @@
 
 \bibitem{netflix_chaosmonkey}
 Cory Bennett and Ariel Tseitlin.
-\newblock {Chaos Monkey Released Into The Wild}.
+\newblock Chaos monkey released into the wild.
 \newblock
   \url{http://techblog.netflix.com/2012/07/chaos-monkey-released-into-wild.html},
   2008.
@@ -16,5 +16,12 @@ Cory Bennett and Ariel Tseitlin.
 \bibitem{testing_techniques}
 Lu~Luo.
 \newblock Software testing techniques.
+\newblock \url{http://www.cs.cmu.edu/~luluo/Courses/17939Report.pdf}.
+
+\bibitem{takanen2008fuzzing}
+A.~Takanen, J.D. DeMott, and C.~Miller.
+\newblock {\em Fuzzing for Software Security Testing and Quality Assurance}.
+\newblock Artech House information security and privacy series. Artech House,
+  2008.
 
 \end{thebibliography}

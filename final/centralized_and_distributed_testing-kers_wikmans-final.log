@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.13 (TeX Live 2013/dev) (format=latex 2013.3.4)  10 MAR 2013 20:31
+This is pdfTeX, Version 3.1415926-2.5-1.40.13 (TeX Live 2013/dev) (format=latex 2013.3.4)  11 MAR 2013 23:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -485,51 +485,36 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
 (Font)              Font shape `T1/ptm/b/n' tried instead on input line 66.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 76.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 98.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 76.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 98.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 76.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 98.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <5> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 76.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 98.
+ [1
 
-Underfull \hbox (badness 1609) in paragraph at lines 116--117
+
+]
+Underfull \hbox (badness 1609) in paragraph at lines 132--134
 []\T1/ptm/m/n/10 Distributed sys-tems rely on com-mu-ni-ca-tion be-tween
  []
 
-[1
-
-
-] (./centralized_and_distributed_testing-kers_wikmans-final.bbl
+(./centralized_and_distributed_testing-kers_wikmans-final.bbl
 Underfull \hbox (badness 10000) in paragraph at lines 9--15
-[]\T1/ptm/m/n/10 Cory Ben-nett and Ariel Tseitlin.  Chaos
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 9--15
-\T1/ptm/m/n/10 Mon-key Re-leased Into The Wild.  $\T1/pcr/m/n/10 http :
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 9--15
-\T1/pcr/m/n/10 / / techblog . netflix . com / 2012 / 07 /
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 9--15
-\T1/pcr/m/n/10 chaos-[]monkey-[]released-[]into-[]wild . html$\T1/ptm/m/n/10 , 
-2008.
+\T1/pcr/m/n/10 07 / chaos-[]monkey-[]released-[]into-[]wild . html$\T1/ptm/m/n/
+10 ,
  []
 
 ) [2] (./centralized_and_distributed_testing-kers_wikmans-final.aux) ) 
 Here is how much of TeX's memory you used:
- 2426 strings out of 495064
- 29301 string characters out of 3182218
- 94827 words of memory out of 3000000
- 5582 multiletter control sequences out of 15000+200000
- 45307 words of font info for 72 fonts, out of 3000000 for 9000
+ 2429 strings out of 495064
+ 29346 string characters out of 3182218
+ 95821 words of memory out of 3000000
+ 5585 multiletter control sequences out of 15000+200000
+ 47019 words of font info for 73 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 29i,11n,43p,832b,443s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 29i,11n,43p,965b,443s stack positions out of 5000i,500n,10000p,200000b,50000s
 
 Output written on centralized_and_distributed_testing-kers_wikmans-final.dvi (2
- pages, 8460 bytes).
+ pages, 11844 bytes).

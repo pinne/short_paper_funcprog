@@ -42,12 +42,12 @@
    \email{\url{skers@kth.se}}\\
    \affaddr{School of Technology and Health}\\
    \affaddr{KTH Royal Institute of Technology}\\
-   \affaddr{February 2013}\\
+   \affaddr{March 2013}\\
 \alignauthor David Wikmans\\
    \email{\url{wikmans@kth.se}}\\
    \affaddr{School of Technology and Health}\\
    \affaddr{KTH Royal Institute of Technology}\\
-   \affaddr{February 2013}\\
+   \affaddr{March 2013}\\
 }
 
 \title{Centralized and distributed testing}
@@ -55,7 +55,7 @@
 %Which methodologies and technologies are there and how are they used to test centralized and distributed systems behaviour and operation respectively"
 
 %\conferenceinfo{SenSys'07,} {November 6--9, 2007, Sydney, Australia.}
-\CopyrightYear{2012}
+\CopyrightYear{2013}
 %\crdata{} % not submitted
 %\crdata{1-59593-763-6/07/0011}
 
@@ -67,13 +67,13 @@
 \noindent
 %three sentences, not paragraphs.
 %state the problem
-This paper reviews some select methodologies and techniques used for testing the behaviour and reliability of software applications, and how testing differs between distributed and centralized systems.
+Developing and maintaining software is error prone and bugs are hard to locate, this paper reviews some testing approaches used for ensuring the behaviour and reliability of software applications, and how testing differs between distributed and centralized systems.
 %describe why this is a problem
 Application operability, uptime and availability are concerns for large systems and services but testing these areas can be tricky.
 %state the solution
-In the software industry testing is not only necessary but common practice and with the emergance of distributed systems and the internet, testing faces new challenges.
+In the software industry testing is not only necessary but common practice and with the emergence of distributed systems and the internet, testing faces new challenges.
 %state results
-By reducing dependencies\footnote{Low coupling} of the distributed parts of the system and purposely subjecting the network to high load, the distributed system can be hardened and better protected against bugs.
+By reducing dependencies of the distributed parts of the system and purposely subjecting the network to high load during fuzz testing, the distributed system can be hardened and better protected against bugs.
 
 \end{abstract}
 
@@ -89,49 +89,65 @@ By reducing dependencies\footnote{Low coupling} of the distributed parts of the 
 
 \section{Introduction}
   \label{sec:intro}
+  %First paragraph: Introduction to the problem and problem statement. This is a longer version of the two first sentences in the abstract.
 \noindent
-Software testing has been a part of software-development as long as there have been computers. To assess the quality of computer software testing is very important. Testing typically takes upwards 40\% -- 50\% of the development time, and even more for systems that require higher levels of reliability. \cite{testing_techniques}
+As software projects grow, so does the amount of possible bugs.
+Software testing has been a part of software-development for as long as there have been computers, and bugs in the shape of logical error, faulty implementation and in modular interoperability. To assess the quality of computer software testing is very important. Testing typically takes upwards 40\% -- 50\% of the development time, and even more for systems that require higher levels of reliability. \cite{testing_techniques}
 
-Software testing is divided into two schools of thought. Static testing which is to analyze the source code by inspections, peer reviews and walkthroughs. Dynamic testing where the application is executed and the behaviour of the program, or rather, the systems response is tested.
+%Second paragraph: State alternative solutions, with references.
+Software testing is divided into two schools of thought. Static testing which analyzes the source code by inspections, peer reviews and \emph{walkthroughs}. Dynamic testing where the application is executed and the behaviour of the program, or rather, the systems response is tested. This short paper discusses various methods and surrounding paradigms respective properties, in relation to testing. Testing can be done after the development process by an independent group of testers\footnote{As part of verification and validation}, which is part of the traditional or \emph{Waterfall} approach, other software development processes such as Agile where the developers work with short development cycles, continuously test the software. Related to Agile processes is \emph{Test Driven Development}, where you write tests before the development cycle starts.\cite{testing_techniques}
 
-Testing can be done after the development process by an independent group of testers, which is the traditional or \emph{Waterfall} approach. Writing tests before the development process begins is known as \emph{Test Driven Development}.
+%Third paragraph: “The contributions of this paper are” (describe your solution and the summarize the results).  Note: in general, the system itself is not a contribution; the measured results from the system are the contribution.
+This paper focuses on testing strategies, properties of centralized and distributed systems, how they relate to testing and ensuring fault-tolerant operation. Distributed testing requires additional precautions over its centralized parts and they both share some fundamental practices.
 
 \section{Evaluation}
 
+\subsection{Fuzz testing}\noindent
+In order to find unexpected bugs in software, a method called fuzz testing can be used. This is an automated process that supply the system with random input, trying to cause bugs and crashes. The method can find bugs that human beings could easily overlook, enhance integrity and is generally easy to implement.\cite{takanen2008fuzzing}
+
+Used in both centralized and distributed software testing, \emph{Fuzz testing} is a form of \emph{black box testing}, useful for locating hard to find software bugs. In section \ref{sec:monkey}, we take a closer look at the \emph{Chaos Monkey}, which uses fuzz testing to finding bugs in distributed fault-tolerant systems running on Amazons cloud computing platform.
+
 \subsection{Centralized systems} \noindent
+\subsubsection{Testing methods}
+In the \emph{black box testing} approach, the tester do not care about the inner workings of the implementation, only its return value. The tester injects test cases through one or more available interfaces and compares to the expected result.\cite{takanen2008fuzzing}
 
-\emph{Unit tests} are tests for select code segments. Normally these tests are on a functional level. In object-oriented languages unit tests means tests for classes. 
-
-The \emph{box approach} is where you put something in the box and then return a result. A black-box is where you do not care about the inner workings of the box (implementation) only the return value. A white or clear-box is when you test the interal structure of the object. A gray-box test is a combination of both.
+The \emph{white box} or \emph{clear box} approach is when you test the internal structure of the object with knowledge of its inner workings. The \emph{gray box} testing is a combination of both.
 
 Another is the \emph{bottom-up top-down approach}, where bottom-up means writing tests for each component and top-down only the functions of the high level objects.
 
-Mentioned techniques are not exclusive to centralized systems.
-\subsection{Distributed systems}
+\subsubsection{Unit testing}
+In \emph{Unit testing} the developer test small units of code, this does not ensure the program as a whole works as intended and has to be combined with application-level testing. Normally these tests are on a functional level. In object-oriented languages unit tests means tests for classes. 
+
+%kanske skriva med den här meningen:
+%Mentioned techniques are not exclusive to centralized systems.
+\subsection{Distributed systems}\noindent
+A whole set of new problems arises when developing distributed systems, the proneness to error that occurs in centralized software are still there in distributed systems. Just as unit testing in regular programs benefit from having distinct modular parts, the distributed application can benefit from the lower coupling. This effectively decreases the amount of software testing specific to distribution, thanks to the reduced inter-node dependencies. This isolates the test cases to a local level and avoids some aspects of distributed testing procedures and simplifies code by treating the nodes as resources.
+
+Distributed system often grow large and produce detailed logs of programmatic operation and network status, analyzing large quantities of log data becomes more important as these systems grow and becomes more prevalent. Though tests serve an important purpose, they are only as good as their implementation and can not guarantee a fault-less system and testing distributed aspects will become an important part of developing large scale systems.
 
 \subsubsection{States}\noindent
- %kanske flytta till introduction, state space innebär att det uppstår fler möjliga tillstånd (som kan vara buggiga) i distr. applikationer.
+%kanske flytta till introduction, state space innebär att det uppstår fler möjliga tillstånd (som kan vara buggiga) i distr. applikationer.
 Distributed applications, effectively increases the number of possible states the system can have. One meassure against this is employing designs which reduce dependencies between nodes, that the state of one node affects the state of another as little as possible.
 
-Distributed systems rely on communication between nodes, this could lead to an increased number of states the system as a whole can take, increasing the possibility of bugs.\cite{Rikitake:2011:2034654} %kolla denna ref!:(
+Distributed systems rely on communication between nodes, this could lead to an increased number of states the system collectively can take, increasing the possibility of bugs.\cite{Rikitake:2011:2034654} %kolla denna ref!:( /s
+% Jag bedömer den vara OK! /s
 
 %\subsubsection{Network}\noindent
 %Simulate network degradation like latency, packet loss and bandwidth restriction. kanske kan vara ett ämne
 
 \subsubsection{Chaos monkey}\noindent
+\label{sec:monkey}
 When testing distributed systems a new class of software bugs emerge which conventional testing procedures may not catch. One inconvenient property of such bugs are infrequent occurrences and are difficult to reproduce, especially with code not in production\footnote{Code that is currently in development}.
 
 One counterintuitive approach would be Netflix \emph{Chaos Monkey} implementation, a disaster testing system, which operates on Amazons cloud computing platform. It randomly causes failures of the virtual machine instances, know as \emph{Auto Scaling Groups}.\cite{netflix_chaosmonkey}
 
-This puts the distributed systems resiliency at test and enforces security measure against netsplits, erratic behavior and failure caused by high latency and bugs of such distributed nature. It enables software developers to discover rarely occuring bugs and resolve them before the code goes live.
+This puts the distributed systems resiliency at test and enforces security measure against netsplits, erratic behavior and failure caused by high latency and bugs of such distributed nature. It enables software developers to discover rarely occurring bugs and resolve them before the code goes live.
 
 \section{Conclusions}
+%The conclusions consist of one or two sentences that conclude the paper by stating how the problem is solved and that restate the primary result.
 \noindent
-A whole set of new problems arises when developing distributed systems, the proneness to error that occurs in centralized software are still there in distributed systems. One way of decreasing the need for distributed software testing is to reduce coupling between the different nodes. This isolates the test cases to a local level and avoids some aspects of distributed testing procedures and simplifies code by treating the nodes as resources.
 
-External occurences such as power outages and network failure are hard to predict, therefore new ways of simulating failure and load has gained ground. Distributed system often grow large and produce detailed logs of programmatic operation and network status, analyzing large quantities of log data becomes more important as these systems grow and becomes more prevalent.
-
-Though tests serve an important purpose, they are only as good as their implementation and can not guarantee a fault-less system. Testing distributed aspects will become an important part of developing large scale systems.
+External occurrences such as power outages and network failure are hard to predict, therefore new ways of simulating failure and load are aspects that are more specific to distributing an application are valuable. \emph{Dynamic testing}\footnote{Including \emph{black box testing}} becomes more important to ensure reliability of the additional aspects such as latency and bandwidth of the distributed system, low coupling and high cohesion still serve as a safeguard against these problems.
 
 \newpage
 %\bibliographystyle{acmtrans}
